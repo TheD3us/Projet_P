@@ -38,12 +38,12 @@ spring:
   mail:
     host: localhost
     port: 25
-    username:
-    password:
+    username: postgres
+    password: Lordkakash1
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/D3us
-    username: PP
-    password:
+    username: postgres
+    password: Lordkakash1
   thymeleaf:
     cache: true
 
