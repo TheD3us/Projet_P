@@ -13,34 +13,69 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: Projet_P
+    instanceId: Projet_P:${spring.application.instance-id:${random.value}}
+
 spring:
+  profiles:
+  # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
+  #active: testcontainers
   application:
-    name: PP
+    name: Projet_P
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:Projet_P;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    name:
+    username:
+    password:
+    hikari:
+      auto-commit: false
   jackson:
     serialization:
       write-durations-as-timestamps: false
+  jpa:
+    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+      hibernate.hbm2ddl.auto: validate
+      hibernate.jdbc.time_zone: UTC
+  data:
+    elasticsearch:
+      properties:
+        path:
+          home: target/elasticsearch
   liquibase:
     contexts: test
-    url: jdbc:h2:mem:PP;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
   mail:
     host: localhost
   main:
     allow-bean-definition-overriding: true
   messages:
     basename: i18n/messages
-  r2dbc:
-    url: r2dbc:h2:mem:///PP?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: r2dbc
-    password:
   task:
     execution:
-      thread-name-prefix: pp-task-
+      thread-name-prefix: projet-p-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: pp-scheduling-
+      thread-name-prefix: projet-p-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -58,7 +93,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'ppApp'
+    name: 'projetPApp'
   logging:
     # To test json console appender
     use-json-format: false
@@ -74,7 +109,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NjZiMjMyZmJhMzM3YWUwYWMxNzY0NTdhMDc4NWM5ZTU2NTBhZTRkMGQ5MjY1YzQ4ZjgyYzZkZmU5MDIxODNiMDY3NDY5NzE3MDRlZDgxYTgzMjEwYjcyNDI0YWVhY2M0OWY2NjJiMjhmZmVhYjQxMTQwYTBjZjM2OTgzOTI1MjQ=
+        base64-secret: ZTAxNTgyNDY4OTI2OGRhNjVlYTdhOGY3YWY2MmU2ZmJhMTgxNjVmOWI3MzhlODJjMGFmMWYxYmY4YTU0YTQ0OGViN2JiMDg2YTE4YTJhMTE4NmM1NTQxMjQzYmRkMDM5ZWIyZWY0ZmRkN2YxYTkwODhiMmFiMTliZDI4Yzk2ZGY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
   metrics:

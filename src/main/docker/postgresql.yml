@@ -1,11 +1,11 @@
 version: '2'
 services:
-  pp-postgresql:
+  projet_p-postgresql:
     image: postgres:12.3
     # volumes:
-    #     - ~/volumes/jhipster/PP/postgresql/:/var/lib/postgresql/data/
+    #     - ~/volumes/jhipster/Projet_P/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=PP
+      - POSTGRES_USER=Projet_P
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:

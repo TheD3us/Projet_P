@@ -1,16 +1,31 @@
 version: '2'
 services:
-  pp-app:
-    image: pp
+  projet_p-app:
+    image: projet_p
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,swagger
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://pp-postgresql:5432/PP
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://projet_p-postgresql:5432/Projet_P
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://projet_p-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://projet_p-elasticsearch:9200
     ports:
       - 8080:8080
-  pp-postgresql:
+  projet_p-postgresql:
     extends:
       file: postgresql.yml
-      service: pp-postgresql
+      service: projet_p-postgresql
+  projet_p-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: projet_p-elasticsearch
+  jhipster-registry:
+    extends:
+      file: jhipster-registry.yml
+      service: jhipster-registry
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config/docker-config/

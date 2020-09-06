@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { JhiAlertService } from 'ng-jhipster';
 
-import { PpTestModule } from '../../../test.module';
+import { ProjetPTestModule } from '../../../test.module';
 import { AlertComponent } from 'app/shared/alert/alert.component';
 
 describe('Component Tests', () => {
@@ -12,7 +12,7 @@ describe('Component Tests', () => {
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [PpTestModule],
+        imports: [ProjetPTestModule],
         declarations: [AlertComponent],
       })
         .overrideTemplate(AlertComponent, '')

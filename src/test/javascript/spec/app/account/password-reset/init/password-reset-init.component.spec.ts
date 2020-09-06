@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 
-import { PpTestModule } from '../../../../test.module';
+import { ProjetPTestModule } from '../../../../test.module';
 import { PasswordResetInitComponent } from 'app/account/password-reset/init/password-reset-init.component';
 import { PasswordResetInitService } from 'app/account/password-reset/init/password-reset-init.service';
 
@@ -14,7 +14,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       fixture = TestBed.configureTestingModule({
-        imports: [PpTestModule],
+        imports: [ProjetPTestModule],
         declarations: [PasswordResetInitComponent],
         providers: [FormBuilder],
       })
