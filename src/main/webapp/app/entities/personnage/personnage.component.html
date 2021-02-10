@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span>Personnages</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-personnage" [routerLink]="['/personnage/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down">
+            Create a new Personnage
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="personnages?.length === 0">
+        <span>No personnages found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="personnages && personnages.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Nom</span></th>
+                    <th scope="col" ><span>Vie</span></th>
+                    <th scope="col" ><span>Classe Armure</span></th>
+                    <th scope="col" ><span>Perception Passive</span></th>
+                    <th scope="col" ><span>Bonus Maitrise</span></th>
+                    <th scope="col" ><span>Initiative</span></th>
+                    <th scope="col" ><span>Bonus Attaque CAC</span></th>
+                    <th scope="col" ><span>Bonus Attaque Distance</span></th>
+                    <th scope="col" ><span>Force</span></th>
+                    <th scope="col" ><span>Dexterite</span></th>
+                    <th scope="col" ><span>Constitution</span></th>
+                    <th scope="col" ><span>Intelligence</span></th>
+                    <th scope="col" ><span>Sagesse</span></th>
+                    <th scope="col" ><span>Charisme</span></th>
+                    <th scope="col" ><span>Modificateur Force</span></th>
+                    <th scope="col" ><span>Modificateur Dexterite</span></th>
+                    <th scope="col" ><span>Modificateur Constitution</span></th>
+                    <th scope="col" ><span>Modificateur Charisme</span></th>
+                    <th scope="col" ><span>Modificateur Intelligence</span></th>
+                    <th scope="col" ><span>Modificateur Sagesse</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let personnage of personnages ;trackBy: trackId">
+                    <td><a [routerLink]="['/personnage', personnage.id, 'view']">{{ personnage.id }}</a></td>
+                    <td>{{ personnage.nom }}</td>
+                    <td>{{ personnage.vie }}</td>
+                    <td>{{ personnage.classeArmure }}</td>
+                    <td>{{ personnage.perceptionPassive }}</td>
+                    <td>{{ personnage.bonusMaitrise }}</td>
+                    <td>{{ personnage.initiative }}</td>
+                    <td>{{ personnage.bonusAttaqueCAC }}</td>
+                    <td>{{ personnage.bonusAttaqueDistance }}</td>
+                    <td>{{ personnage.force }}</td>
+                    <td>{{ personnage.dexterite }}</td>
+                    <td>{{ personnage.constitution }}</td>
+                    <td>{{ personnage.intelligence }}</td>
+                    <td>{{ personnage.sagesse }}</td>
+                    <td>{{ personnage.charisme }}</td>
+                    <td>{{ personnage.modificateurForce }}</td>
+                    <td>{{ personnage.modificateurDexterite }}</td>
+                    <td>{{ personnage.modificateurConstitution }}</td>
+                    <td>{{ personnage.modificateurCharisme }}</td>
+                    <td>{{ personnage.modificateurIntelligence }}</td>
+                    <td>{{ personnage.modificateurSagesse }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/personnage', personnage.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/personnage', personnage.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(personnage)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
