@@ -20,6 +20,7 @@ export interface IPersonnage {
   modificateurCharisme?: number;
   modificateurIntelligence?: number;
   modificateurSagesse?: number;
+  deDeVie?: number;
 }
 
 export class Personnage implements IPersonnage {
@@ -44,6 +45,7 @@ export class Personnage implements IPersonnage {
     public modificateurConstitution?: number,
     public modificateurCharisme?: number,
     public modificateurIntelligence?: number,
-    public modificateurSagesse?: number
+    public modificateurSagesse?: number,
+    public deDeVie?: number
   ) {}
 }

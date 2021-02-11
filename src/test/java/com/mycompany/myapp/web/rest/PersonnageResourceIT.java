@@ -97,6 +97,9 @@ public class PersonnageResourceIT {
     private static final Integer DEFAULT_MODIFICATEUR_SAGESSE = 1;
     private static final Integer UPDATED_MODIFICATEUR_SAGESSE = 2;
 
+    private static final Integer DEFAULT_DE_DE_VIE = 1;
+    private static final Integer UPDATED_DE_DE_VIE = 2;
+
     @Autowired
     private PersonnageRepository personnageRepository;
 
@@ -143,7 +146,8 @@ public class PersonnageResourceIT {
             .modificateurConstitution(DEFAULT_MODIFICATEUR_CONSTITUTION)
             .modificateurCharisme(DEFAULT_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(DEFAULT_MODIFICATEUR_INTELLIGENCE)
-            .modificateurSagesse(DEFAULT_MODIFICATEUR_SAGESSE);
+            .modificateurSagesse(DEFAULT_MODIFICATEUR_SAGESSE)
+            .deDeVie(DEFAULT_DE_DE_VIE);
         return personnage;
     }
     /**
@@ -173,7 +177,8 @@ public class PersonnageResourceIT {
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
             .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
-            .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE);
+            .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
+            .deDeVie(UPDATED_DE_DE_VIE);
         return personnage;
     }
 
@@ -216,6 +221,7 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(DEFAULT_MODIFICATEUR_CHARISME);
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(DEFAULT_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(DEFAULT_MODIFICATEUR_SAGESSE);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(DEFAULT_DE_DE_VIE);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -626,6 +632,25 @@ public class PersonnageResourceIT {
 
     @Test
     @Transactional
+    public void checkDeDeVieIsRequired() throws Exception {
+        int databaseSizeBeforeTest = personnageRepository.findAll().size();
+        // set the field null
+        personnage.setDeDeVie(null);
+
+        // Create the Personnage, which fails.
+
+
+        restPersonnageMockMvc.perform(post("/api/personnages")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(personnage)))
+            .andExpect(status().isBadRequest());
+
+        List<Personnage> personnageList = personnageRepository.findAll();
+        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllPersonnages() throws Exception {
         // Initialize the database
         personnageRepository.saveAndFlush(personnage);
@@ -654,7 +679,8 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
-            .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)));
+            .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
     }
     
     @Test
@@ -687,7 +713,8 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.modificateurConstitution").value(DEFAULT_MODIFICATEUR_CONSTITUTION))
             .andExpect(jsonPath("$.modificateurCharisme").value(DEFAULT_MODIFICATEUR_CHARISME))
             .andExpect(jsonPath("$.modificateurIntelligence").value(DEFAULT_MODIFICATEUR_INTELLIGENCE))
-            .andExpect(jsonPath("$.modificateurSagesse").value(DEFAULT_MODIFICATEUR_SAGESSE));
+            .andExpect(jsonPath("$.modificateurSagesse").value(DEFAULT_MODIFICATEUR_SAGESSE))
+            .andExpect(jsonPath("$.deDeVie").value(DEFAULT_DE_DE_VIE));
     }
     @Test
     @Transactional
@@ -729,7 +756,8 @@ public class PersonnageResourceIT {
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
             .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
-            .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE);
+            .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
+            .deDeVie(UPDATED_DE_DE_VIE);
 
         restPersonnageMockMvc.perform(put("/api/personnages")
             .contentType(MediaType.APPLICATION_JSON)
@@ -760,6 +788,7 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(UPDATED_MODIFICATEUR_CHARISME);
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(UPDATED_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(UPDATED_MODIFICATEUR_SAGESSE);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(UPDATED_DE_DE_VIE);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -838,6 +867,7 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
-            .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)));
+            .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
     }
 }

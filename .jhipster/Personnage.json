@@ -104,6 +104,11 @@
       "fieldName": "modificateurSagesse",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deDeVie",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     }
   ],
   "changelogDate": "20210210164158",

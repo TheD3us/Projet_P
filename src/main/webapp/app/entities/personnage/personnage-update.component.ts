@@ -37,6 +37,7 @@ export class PersonnageUpdateComponent implements OnInit {
     modificateurCharisme: [null, [Validators.required]],
     modificateurIntelligence: [null, [Validators.required]],
     modificateurSagesse: [null, [Validators.required]],
+    deDeVie: [null, [Validators.required]],
   });
 
   constructor(protected personnageService: PersonnageService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -70,6 +71,7 @@ export class PersonnageUpdateComponent implements OnInit {
       modificateurCharisme: personnage.modificateurCharisme,
       modificateurIntelligence: personnage.modificateurIntelligence,
       modificateurSagesse: personnage.modificateurSagesse,
+      deDeVie: personnage.deDeVie,
     });
   }
 
@@ -111,6 +113,7 @@ export class PersonnageUpdateComponent implements OnInit {
       modificateurCharisme: this.editForm.get(['modificateurCharisme'])!.value,
       modificateurIntelligence: this.editForm.get(['modificateurIntelligence'])!.value,
       modificateurSagesse: this.editForm.get(['modificateurSagesse'])!.value,
+      deDeVie: this.editForm.get(['deDeVie'])!.value,
     };
   }
 

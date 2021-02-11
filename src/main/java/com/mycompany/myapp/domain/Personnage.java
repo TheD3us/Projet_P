@@ -104,6 +104,10 @@ public class Personnage implements Serializable {
     @Column(name = "modificateur_sagesse", nullable = false)
     private Integer modificateurSagesse;
 
+    @NotNull
+    @Column(name = "de_de_vie", nullable = false)
+    private Integer deDeVie;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -136,7 +140,7 @@ public class Personnage implements Serializable {
     }
 
     public void setVie(Integer vie) {
-        this.vie = vie;
+        this.vie = this.deDeVie + modificateurConstitution;
     }
 
     public Integer getClasseArmure() {
@@ -162,7 +166,7 @@ public class Personnage implements Serializable {
     }
 
     public void setPerceptionPassive(Integer perceptionPassive) {
-        this.perceptionPassive = perceptionPassive;
+        this.perceptionPassive = 10 + modificateurSagesse;
     }
 
     public Integer getBonusMaitrise() {
@@ -188,7 +192,7 @@ public class Personnage implements Serializable {
     }
 
     public void setInitiative(Integer initiative) {
-        this.initiative = initiative;
+        this.initiative = modificateurDexterite;
     }
 
     public Integer getBonusAttaqueCAC() {
@@ -201,7 +205,7 @@ public class Personnage implements Serializable {
     }
 
     public void setBonusAttaqueCAC(Integer bonusAttaqueCAC) {
-        this.bonusAttaqueCAC = bonusAttaqueCAC;
+        this.bonusAttaqueCAC = bonusMaitrise + modificateurForce;
     }
 
     public Integer getBonusAttaqueDistance() {
@@ -214,7 +218,7 @@ public class Personnage implements Serializable {
     }
 
     public void setBonusAttaqueDistance(Integer bonusAttaqueDistance) {
-        this.bonusAttaqueDistance = bonusAttaqueDistance;
+        this.bonusAttaqueDistance = bonusMaitrise + modificateurDexterite;
     }
 
     public Integer getForce() {
@@ -372,6 +376,19 @@ public class Personnage implements Serializable {
     public void setModificateurSagesse(Integer modificateurSagesse) {
         this.modificateurSagesse = modificateurSagesse;
     }
+
+    public Integer getDeDeVie() {
+        return deDeVie;
+    }
+
+    public Personnage deDeVie(Integer deDeVie) {
+        this.deDeVie = deDeVie;
+        return this;
+    }
+
+    public void setDeDeVie(Integer deDeVie) {
+        this.deDeVie = deDeVie;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -415,6 +432,7 @@ public class Personnage implements Serializable {
             ", modificateurCharisme=" + getModificateurCharisme() +
             ", modificateurIntelligence=" + getModificateurIntelligence() +
             ", modificateurSagesse=" + getModificateurSagesse() +
+            ", deDeVie=" + getDeDeVie() +
             "}";
     }
 }
