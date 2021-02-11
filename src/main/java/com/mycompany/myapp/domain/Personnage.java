@@ -28,33 +28,12 @@ public class Personnage implements Serializable {
     private String nom;
 
     @NotNull
-    @Min(value = 1)
-    @Column(name = "vie", nullable = false)
-    private Integer vie;
-
-    @NotNull
     @Column(name = "classe_armure", nullable = false)
     private Integer classeArmure;
 
     @NotNull
-    @Column(name = "perception_passive", nullable = false)
-    private Integer perceptionPassive;
-
-    @NotNull
     @Column(name = "bonus_maitrise", nullable = false)
     private Integer bonusMaitrise;
-
-    @NotNull
-    @Column(name = "initiative", nullable = false)
-    private Integer initiative;
-
-    @NotNull
-    @Column(name = "bonus_attaque_cac", nullable = false)
-    private Integer bonusAttaqueCAC;
-
-    @NotNull
-    @Column(name = "bonus_attaque_distance", nullable = false)
-    private Integer bonusAttaqueDistance;
 
     @NotNull
     @Column(name = "force", nullable = false)
@@ -81,32 +60,42 @@ public class Personnage implements Serializable {
     private Integer charisme;
 
     @NotNull
-    @Column(name = "modificateur_force", nullable = false)
-    private Integer modificateurForce;
-
-    @NotNull
-    @Column(name = "modificateur_dexterite", nullable = false)
-    private Integer modificateurDexterite;
-
-    @NotNull
-    @Column(name = "modificateur_constitution", nullable = false)
-    private Integer modificateurConstitution;
-
-    @NotNull
-    @Column(name = "modificateur_charisme", nullable = false)
-    private Integer modificateurCharisme;
-
-    @NotNull
-    @Column(name = "modificateur_intelligence", nullable = false)
-    private Integer modificateurIntelligence;
-
-    @NotNull
-    @Column(name = "modificateur_sagesse", nullable = false)
-    private Integer modificateurSagesse;
-
-    @NotNull
     @Column(name = "de_de_vie", nullable = false)
     private Integer deDeVie;
+
+    @Min(value = 1)
+    @Column(name = "vie")
+    private Integer vie;
+
+    @Column(name = "perception_passive")
+    private Integer perceptionPassive;
+
+    @Column(name = "initiative")
+    private Integer initiative;
+
+    @Column(name = "bonus_attaque_cac")
+    private Integer bonusAttaqueCAC;
+
+    @Column(name = "bonus_attaque_distance")
+    private Integer bonusAttaqueDistance;
+
+    @Column(name = "modificateur_force")
+    private Integer modificateurForce;
+
+    @Column(name = "modificateur_dexterite")
+    private Integer modificateurDexterite;
+
+    @Column(name = "modificateur_constitution")
+    private Integer modificateurConstitution;
+
+    @Column(name = "modificateur_intelligence")
+    private Integer modificateurIntelligence;
+
+    @Column(name = "modificateur_sagesse")
+    private Integer modificateurSagesse;
+
+    @Column(name = "modificateur_charisme")
+    private Integer modificateurCharisme;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -130,19 +119,6 @@ public class Personnage implements Serializable {
         this.nom = nom;
     }
 
-    public Integer getVie() {
-        return vie;
-    }
-
-    public Personnage vie(Integer vie) {
-        this.vie = vie;
-        return this;
-    }
-
-    public void setVie(Integer vie) {
-        this.vie = this.deDeVie + modificateurConstitution;
-    }
-
     public Integer getClasseArmure() {
         return classeArmure;
     }
@@ -156,19 +132,6 @@ public class Personnage implements Serializable {
         this.classeArmure = classeArmure;
     }
 
-    public Integer getPerceptionPassive() {
-        return perceptionPassive;
-    }
-
-    public Personnage perceptionPassive(Integer perceptionPassive) {
-        this.perceptionPassive = perceptionPassive;
-        return this;
-    }
-
-    public void setPerceptionPassive(Integer perceptionPassive) {
-        this.perceptionPassive = 10 + modificateurSagesse;
-    }
-
     public Integer getBonusMaitrise() {
         return bonusMaitrise;
     }
@@ -180,45 +143,6 @@ public class Personnage implements Serializable {
 
     public void setBonusMaitrise(Integer bonusMaitrise) {
         this.bonusMaitrise = bonusMaitrise;
-    }
-
-    public Integer getInitiative() {
-        return initiative;
-    }
-
-    public Personnage initiative(Integer initiative) {
-        this.initiative = initiative;
-        return this;
-    }
-
-    public void setInitiative(Integer initiative) {
-        this.initiative = modificateurDexterite;
-    }
-
-    public Integer getBonusAttaqueCAC() {
-        return bonusAttaqueCAC;
-    }
-
-    public Personnage bonusAttaqueCAC(Integer bonusAttaqueCAC) {
-        this.bonusAttaqueCAC = bonusAttaqueCAC;
-        return this;
-    }
-
-    public void setBonusAttaqueCAC(Integer bonusAttaqueCAC) {
-        this.bonusAttaqueCAC = bonusMaitrise + modificateurForce;
-    }
-
-    public Integer getBonusAttaqueDistance() {
-        return bonusAttaqueDistance;
-    }
-
-    public Personnage bonusAttaqueDistance(Integer bonusAttaqueDistance) {
-        this.bonusAttaqueDistance = bonusAttaqueDistance;
-        return this;
-    }
-
-    public void setBonusAttaqueDistance(Integer bonusAttaqueDistance) {
-        this.bonusAttaqueDistance = bonusMaitrise + modificateurDexterite;
     }
 
     public Integer getForce() {
@@ -299,6 +223,84 @@ public class Personnage implements Serializable {
         this.charisme = charisme;
     }
 
+    public Integer getDeDeVie() {
+        return deDeVie;
+    }
+
+    public Personnage deDeVie(Integer deDeVie) {
+        this.deDeVie = deDeVie;
+        return this;
+    }
+
+    public void setDeDeVie(Integer deDeVie) {
+        this.deDeVie = deDeVie;
+    }
+
+    public Integer getVie() {
+        return vie;
+    }
+
+    public Personnage vie(Integer vie) {
+        this.vie = vie;
+        return this;
+    }
+
+    public void setVie(Integer vie) {
+        this.vie = deDeVie + modificateurConstitution;
+    }
+
+    public Integer getPerceptionPassive() {
+        return perceptionPassive;
+    }
+
+    public Personnage perceptionPassive(Integer perceptionPassive) {
+        this.perceptionPassive = perceptionPassive;
+        return this;
+    }
+
+    public void setPerceptionPassive(Integer perceptionPassive) {
+        this.perceptionPassive = 10 + modificateurSagesse;
+    }
+
+    public Integer getInitiative() {
+        return initiative;
+    }
+
+    public Personnage initiative(Integer initiative) {
+        this.initiative = initiative;
+        return this;
+    }
+
+    public void setInitiative(Integer initiative) {
+        this.initiative = modificateurDexterite;
+    }
+
+    public Integer getBonusAttaqueCAC() {
+        return bonusAttaqueCAC;
+    }
+
+    public Personnage bonusAttaqueCAC(Integer bonusAttaqueCAC) {
+        this.bonusAttaqueCAC = bonusAttaqueCAC;
+        return this;
+    }
+
+    public void setBonusAttaqueCAC(Integer bonusAttaqueCAC) {
+        this.bonusAttaqueCAC = modificateurForce;
+    }
+
+    public Integer getBonusAttaqueDistance() {
+        return bonusAttaqueDistance;
+    }
+
+    public Personnage bonusAttaqueDistance(Integer bonusAttaqueDistance) {
+        this.bonusAttaqueDistance = bonusAttaqueDistance;
+        return this;
+    }
+
+    public void setBonusAttaqueDistance(Integer bonusAttaqueDistance) {
+        this.bonusAttaqueDistance = modificateurDexterite;
+    }
+
     public Integer getModificateurForce() {
         return modificateurForce;
     }
@@ -338,19 +340,6 @@ public class Personnage implements Serializable {
         this.modificateurConstitution = modificateurConstitution;
     }
 
-    public Integer getModificateurCharisme() {
-        return modificateurCharisme;
-    }
-
-    public Personnage modificateurCharisme(Integer modificateurCharisme) {
-        this.modificateurCharisme = modificateurCharisme;
-        return this;
-    }
-
-    public void setModificateurCharisme(Integer modificateurCharisme) {
-        this.modificateurCharisme = modificateurCharisme;
-    }
-
     public Integer getModificateurIntelligence() {
         return modificateurIntelligence;
     }
@@ -377,17 +366,17 @@ public class Personnage implements Serializable {
         this.modificateurSagesse = modificateurSagesse;
     }
 
-    public Integer getDeDeVie() {
-        return deDeVie;
+    public Integer getModificateurCharisme() {
+        return modificateurCharisme;
     }
 
-    public Personnage deDeVie(Integer deDeVie) {
-        this.deDeVie = deDeVie;
+    public Personnage modificateurCharisme(Integer modificateurCharisme) {
+        this.modificateurCharisme = modificateurCharisme;
         return this;
     }
 
-    public void setDeDeVie(Integer deDeVie) {
-        this.deDeVie = deDeVie;
+    public void setModificateurCharisme(Integer modificateurCharisme) {
+        this.modificateurCharisme = modificateurCharisme;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -413,26 +402,26 @@ public class Personnage implements Serializable {
         return "Personnage{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", vie=" + getVie() +
             ", classeArmure=" + getClasseArmure() +
-            ", perceptionPassive=" + getPerceptionPassive() +
             ", bonusMaitrise=" + getBonusMaitrise() +
-            ", initiative=" + getInitiative() +
-            ", bonusAttaqueCAC=" + getBonusAttaqueCAC() +
-            ", bonusAttaqueDistance=" + getBonusAttaqueDistance() +
             ", force=" + getForce() +
             ", dexterite=" + getDexterite() +
             ", constitution=" + getConstitution() +
             ", intelligence=" + getIntelligence() +
             ", sagesse=" + getSagesse() +
             ", charisme=" + getCharisme() +
+            ", deDeVie=" + getDeDeVie() +
+            ", vie=" + getVie() +
+            ", perceptionPassive=" + getPerceptionPassive() +
+            ", initiative=" + getInitiative() +
+            ", bonusAttaqueCAC=" + getBonusAttaqueCAC() +
+            ", bonusAttaqueDistance=" + getBonusAttaqueDistance() +
             ", modificateurForce=" + getModificateurForce() +
             ", modificateurDexterite=" + getModificateurDexterite() +
             ", modificateurConstitution=" + getModificateurConstitution() +
-            ", modificateurCharisme=" + getModificateurCharisme() +
             ", modificateurIntelligence=" + getModificateurIntelligence() +
             ", modificateurSagesse=" + getModificateurSagesse() +
-            ", deDeVie=" + getDeDeVie() +
+            ", modificateurCharisme=" + getModificateurCharisme() +
             "}";
     }
 }

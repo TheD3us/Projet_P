@@ -10,38 +10,12 @@
       "fieldValidateRulesMinlength": "3"
     },
     {
-      "fieldName": "vie",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required", "min"],
-      "fieldValidateRulesMin": "1"
-    },
-    {
       "fieldName": "classeArmure",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "perceptionPassive",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "bonusMaitrise",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "initiative",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "bonusAttaqueCAC",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "bonusAttaqueDistance",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
@@ -76,39 +50,55 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "modificateurForce",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "modificateurDexterite",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "modificateurConstitution",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "modificateurCharisme",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "modificateurIntelligence",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "modificateurSagesse",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "deDeVie",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vie",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "perceptionPassive",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "initiative",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bonusAttaqueCAC",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bonusAttaqueDistance",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurForce",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurDexterite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurConstitution",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurIntelligence",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurSagesse",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modificateurCharisme",
+      "fieldType": "Integer"
     }
   ],
   "changelogDate": "20210210164158",

@@ -40,26 +40,11 @@ public class PersonnageResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_VIE = 1;
-    private static final Integer UPDATED_VIE = 2;
-
     private static final Integer DEFAULT_CLASSE_ARMURE = 1;
     private static final Integer UPDATED_CLASSE_ARMURE = 2;
 
-    private static final Integer DEFAULT_PERCEPTION_PASSIVE = 1;
-    private static final Integer UPDATED_PERCEPTION_PASSIVE = 2;
-
     private static final Integer DEFAULT_BONUS_MAITRISE = 1;
     private static final Integer UPDATED_BONUS_MAITRISE = 2;
-
-    private static final Integer DEFAULT_INITIATIVE = 1;
-    private static final Integer UPDATED_INITIATIVE = 2;
-
-    private static final Integer DEFAULT_BONUS_ATTAQUE_CAC = 1;
-    private static final Integer UPDATED_BONUS_ATTAQUE_CAC = 2;
-
-    private static final Integer DEFAULT_BONUS_ATTAQUE_DISTANCE = 1;
-    private static final Integer UPDATED_BONUS_ATTAQUE_DISTANCE = 2;
 
     private static final Integer DEFAULT_FORCE = 1;
     private static final Integer UPDATED_FORCE = 2;
@@ -79,6 +64,24 @@ public class PersonnageResourceIT {
     private static final Integer DEFAULT_CHARISME = 1;
     private static final Integer UPDATED_CHARISME = 2;
 
+    private static final Integer DEFAULT_DE_DE_VIE = 1;
+    private static final Integer UPDATED_DE_DE_VIE = 2;
+
+    private static final Integer DEFAULT_VIE = 1;
+    private static final Integer UPDATED_VIE = 2;
+
+    private static final Integer DEFAULT_PERCEPTION_PASSIVE = 1;
+    private static final Integer UPDATED_PERCEPTION_PASSIVE = 2;
+
+    private static final Integer DEFAULT_INITIATIVE = 1;
+    private static final Integer UPDATED_INITIATIVE = 2;
+
+    private static final Integer DEFAULT_BONUS_ATTAQUE_CAC = 1;
+    private static final Integer UPDATED_BONUS_ATTAQUE_CAC = 2;
+
+    private static final Integer DEFAULT_BONUS_ATTAQUE_DISTANCE = 1;
+    private static final Integer UPDATED_BONUS_ATTAQUE_DISTANCE = 2;
+
     private static final Integer DEFAULT_MODIFICATEUR_FORCE = 1;
     private static final Integer UPDATED_MODIFICATEUR_FORCE = 2;
 
@@ -88,17 +91,14 @@ public class PersonnageResourceIT {
     private static final Integer DEFAULT_MODIFICATEUR_CONSTITUTION = 1;
     private static final Integer UPDATED_MODIFICATEUR_CONSTITUTION = 2;
 
-    private static final Integer DEFAULT_MODIFICATEUR_CHARISME = 1;
-    private static final Integer UPDATED_MODIFICATEUR_CHARISME = 2;
-
     private static final Integer DEFAULT_MODIFICATEUR_INTELLIGENCE = 1;
     private static final Integer UPDATED_MODIFICATEUR_INTELLIGENCE = 2;
 
     private static final Integer DEFAULT_MODIFICATEUR_SAGESSE = 1;
     private static final Integer UPDATED_MODIFICATEUR_SAGESSE = 2;
 
-    private static final Integer DEFAULT_DE_DE_VIE = 1;
-    private static final Integer UPDATED_DE_DE_VIE = 2;
+    private static final Integer DEFAULT_MODIFICATEUR_CHARISME = 1;
+    private static final Integer UPDATED_MODIFICATEUR_CHARISME = 2;
 
     @Autowired
     private PersonnageRepository personnageRepository;
@@ -128,26 +128,26 @@ public class PersonnageResourceIT {
     public static Personnage createEntity(EntityManager em) {
         Personnage personnage = new Personnage()
             .nom(DEFAULT_NOM)
-            .vie(DEFAULT_VIE)
             .classeArmure(DEFAULT_CLASSE_ARMURE)
-            .perceptionPassive(DEFAULT_PERCEPTION_PASSIVE)
             .bonusMaitrise(DEFAULT_BONUS_MAITRISE)
-            .initiative(DEFAULT_INITIATIVE)
-            .bonusAttaqueCAC(DEFAULT_BONUS_ATTAQUE_CAC)
-            .bonusAttaqueDistance(DEFAULT_BONUS_ATTAQUE_DISTANCE)
             .force(DEFAULT_FORCE)
             .dexterite(DEFAULT_DEXTERITE)
             .constitution(DEFAULT_CONSTITUTION)
             .intelligence(DEFAULT_INTELLIGENCE)
             .sagesse(DEFAULT_SAGESSE)
             .charisme(DEFAULT_CHARISME)
+            .deDeVie(DEFAULT_DE_DE_VIE)
+            .vie(DEFAULT_VIE)
+            .perceptionPassive(DEFAULT_PERCEPTION_PASSIVE)
+            .initiative(DEFAULT_INITIATIVE)
+            .bonusAttaqueCAC(DEFAULT_BONUS_ATTAQUE_CAC)
+            .bonusAttaqueDistance(DEFAULT_BONUS_ATTAQUE_DISTANCE)
             .modificateurForce(DEFAULT_MODIFICATEUR_FORCE)
             .modificateurDexterite(DEFAULT_MODIFICATEUR_DEXTERITE)
             .modificateurConstitution(DEFAULT_MODIFICATEUR_CONSTITUTION)
-            .modificateurCharisme(DEFAULT_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(DEFAULT_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(DEFAULT_MODIFICATEUR_SAGESSE)
-            .deDeVie(DEFAULT_DE_DE_VIE);
+            .modificateurCharisme(DEFAULT_MODIFICATEUR_CHARISME);
         return personnage;
     }
     /**
@@ -159,26 +159,26 @@ public class PersonnageResourceIT {
     public static Personnage createUpdatedEntity(EntityManager em) {
         Personnage personnage = new Personnage()
             .nom(UPDATED_NOM)
-            .vie(UPDATED_VIE)
             .classeArmure(UPDATED_CLASSE_ARMURE)
-            .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
             .bonusMaitrise(UPDATED_BONUS_MAITRISE)
-            .initiative(UPDATED_INITIATIVE)
-            .bonusAttaqueCAC(UPDATED_BONUS_ATTAQUE_CAC)
-            .bonusAttaqueDistance(UPDATED_BONUS_ATTAQUE_DISTANCE)
             .force(UPDATED_FORCE)
             .dexterite(UPDATED_DEXTERITE)
             .constitution(UPDATED_CONSTITUTION)
             .intelligence(UPDATED_INTELLIGENCE)
             .sagesse(UPDATED_SAGESSE)
             .charisme(UPDATED_CHARISME)
+            .deDeVie(UPDATED_DE_DE_VIE)
+            .vie(UPDATED_VIE)
+            .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
+            .initiative(UPDATED_INITIATIVE)
+            .bonusAttaqueCAC(UPDATED_BONUS_ATTAQUE_CAC)
+            .bonusAttaqueDistance(UPDATED_BONUS_ATTAQUE_DISTANCE)
             .modificateurForce(UPDATED_MODIFICATEUR_FORCE)
             .modificateurDexterite(UPDATED_MODIFICATEUR_DEXTERITE)
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
-            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
-            .deDeVie(UPDATED_DE_DE_VIE);
+            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME);
         return personnage;
     }
 
@@ -202,26 +202,26 @@ public class PersonnageResourceIT {
         assertThat(personnageList).hasSize(databaseSizeBeforeCreate + 1);
         Personnage testPersonnage = personnageList.get(personnageList.size() - 1);
         assertThat(testPersonnage.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testPersonnage.getVie()).isEqualTo(DEFAULT_VIE);
         assertThat(testPersonnage.getClasseArmure()).isEqualTo(DEFAULT_CLASSE_ARMURE);
-        assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(DEFAULT_PERCEPTION_PASSIVE);
         assertThat(testPersonnage.getBonusMaitrise()).isEqualTo(DEFAULT_BONUS_MAITRISE);
-        assertThat(testPersonnage.getInitiative()).isEqualTo(DEFAULT_INITIATIVE);
-        assertThat(testPersonnage.getBonusAttaqueCAC()).isEqualTo(DEFAULT_BONUS_ATTAQUE_CAC);
-        assertThat(testPersonnage.getBonusAttaqueDistance()).isEqualTo(DEFAULT_BONUS_ATTAQUE_DISTANCE);
         assertThat(testPersonnage.getForce()).isEqualTo(DEFAULT_FORCE);
         assertThat(testPersonnage.getDexterite()).isEqualTo(DEFAULT_DEXTERITE);
         assertThat(testPersonnage.getConstitution()).isEqualTo(DEFAULT_CONSTITUTION);
         assertThat(testPersonnage.getIntelligence()).isEqualTo(DEFAULT_INTELLIGENCE);
         assertThat(testPersonnage.getSagesse()).isEqualTo(DEFAULT_SAGESSE);
         assertThat(testPersonnage.getCharisme()).isEqualTo(DEFAULT_CHARISME);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(DEFAULT_DE_DE_VIE);
+        assertThat(testPersonnage.getVie()).isEqualTo(DEFAULT_VIE);
+        assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(DEFAULT_PERCEPTION_PASSIVE);
+        assertThat(testPersonnage.getInitiative()).isEqualTo(DEFAULT_INITIATIVE);
+        assertThat(testPersonnage.getBonusAttaqueCAC()).isEqualTo(DEFAULT_BONUS_ATTAQUE_CAC);
+        assertThat(testPersonnage.getBonusAttaqueDistance()).isEqualTo(DEFAULT_BONUS_ATTAQUE_DISTANCE);
         assertThat(testPersonnage.getModificateurForce()).isEqualTo(DEFAULT_MODIFICATEUR_FORCE);
         assertThat(testPersonnage.getModificateurDexterite()).isEqualTo(DEFAULT_MODIFICATEUR_DEXTERITE);
         assertThat(testPersonnage.getModificateurConstitution()).isEqualTo(DEFAULT_MODIFICATEUR_CONSTITUTION);
-        assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(DEFAULT_MODIFICATEUR_CHARISME);
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(DEFAULT_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(DEFAULT_MODIFICATEUR_SAGESSE);
-        assertThat(testPersonnage.getDeDeVie()).isEqualTo(DEFAULT_DE_DE_VIE);
+        assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(DEFAULT_MODIFICATEUR_CHARISME);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -271,25 +271,6 @@ public class PersonnageResourceIT {
 
     @Test
     @Transactional
-    public void checkVieIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setVie(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkClasseArmureIsRequired() throws Exception {
         int databaseSizeBeforeTest = personnageRepository.findAll().size();
         // set the field null
@@ -309,86 +290,10 @@ public class PersonnageResourceIT {
 
     @Test
     @Transactional
-    public void checkPerceptionPassiveIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setPerceptionPassive(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkBonusMaitriseIsRequired() throws Exception {
         int databaseSizeBeforeTest = personnageRepository.findAll().size();
         // set the field null
         personnage.setBonusMaitrise(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkInitiativeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setInitiative(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkBonusAttaqueCACIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setBonusAttaqueCAC(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkBonusAttaqueDistanceIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setBonusAttaqueDistance(null);
 
         // Create the Personnage, which fails.
 
@@ -518,120 +423,6 @@ public class PersonnageResourceIT {
 
     @Test
     @Transactional
-    public void checkModificateurForceIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurForce(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkModificateurDexteriteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurDexterite(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkModificateurConstitutionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurConstitution(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkModificateurCharismeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurCharisme(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkModificateurIntelligenceIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurIntelligence(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkModificateurSagesseIsRequired() throws Exception {
-        int databaseSizeBeforeTest = personnageRepository.findAll().size();
-        // set the field null
-        personnage.setModificateurSagesse(null);
-
-        // Create the Personnage, which fails.
-
-
-        restPersonnageMockMvc.perform(post("/api/personnages")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(personnage)))
-            .andExpect(status().isBadRequest());
-
-        List<Personnage> personnageList = personnageRepository.findAll();
-        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkDeDeVieIsRequired() throws Exception {
         int databaseSizeBeforeTest = personnageRepository.findAll().size();
         // set the field null
@@ -661,26 +452,26 @@ public class PersonnageResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(personnage.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
-            .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
             .andExpect(jsonPath("$.[*].classeArmure").value(hasItem(DEFAULT_CLASSE_ARMURE)))
-            .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
             .andExpect(jsonPath("$.[*].bonusMaitrise").value(hasItem(DEFAULT_BONUS_MAITRISE)))
-            .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
-            .andExpect(jsonPath("$.[*].bonusAttaqueCAC").value(hasItem(DEFAULT_BONUS_ATTAQUE_CAC)))
-            .andExpect(jsonPath("$.[*].bonusAttaqueDistance").value(hasItem(DEFAULT_BONUS_ATTAQUE_DISTANCE)))
             .andExpect(jsonPath("$.[*].force").value(hasItem(DEFAULT_FORCE)))
             .andExpect(jsonPath("$.[*].dexterite").value(hasItem(DEFAULT_DEXTERITE)))
             .andExpect(jsonPath("$.[*].constitution").value(hasItem(DEFAULT_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].intelligence").value(hasItem(DEFAULT_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].sagesse").value(hasItem(DEFAULT_SAGESSE)))
             .andExpect(jsonPath("$.[*].charisme").value(hasItem(DEFAULT_CHARISME)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)))
+            .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
+            .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
+            .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
+            .andExpect(jsonPath("$.[*].bonusAttaqueCAC").value(hasItem(DEFAULT_BONUS_ATTAQUE_CAC)))
+            .andExpect(jsonPath("$.[*].bonusAttaqueDistance").value(hasItem(DEFAULT_BONUS_ATTAQUE_DISTANCE)))
             .andExpect(jsonPath("$.[*].modificateurForce").value(hasItem(DEFAULT_MODIFICATEUR_FORCE)))
             .andExpect(jsonPath("$.[*].modificateurDexterite").value(hasItem(DEFAULT_MODIFICATEUR_DEXTERITE)))
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
-            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
-            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
+            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)));
     }
     
     @Test
@@ -695,26 +486,26 @@ public class PersonnageResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(personnage.getId().intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
-            .andExpect(jsonPath("$.vie").value(DEFAULT_VIE))
             .andExpect(jsonPath("$.classeArmure").value(DEFAULT_CLASSE_ARMURE))
-            .andExpect(jsonPath("$.perceptionPassive").value(DEFAULT_PERCEPTION_PASSIVE))
             .andExpect(jsonPath("$.bonusMaitrise").value(DEFAULT_BONUS_MAITRISE))
-            .andExpect(jsonPath("$.initiative").value(DEFAULT_INITIATIVE))
-            .andExpect(jsonPath("$.bonusAttaqueCAC").value(DEFAULT_BONUS_ATTAQUE_CAC))
-            .andExpect(jsonPath("$.bonusAttaqueDistance").value(DEFAULT_BONUS_ATTAQUE_DISTANCE))
             .andExpect(jsonPath("$.force").value(DEFAULT_FORCE))
             .andExpect(jsonPath("$.dexterite").value(DEFAULT_DEXTERITE))
             .andExpect(jsonPath("$.constitution").value(DEFAULT_CONSTITUTION))
             .andExpect(jsonPath("$.intelligence").value(DEFAULT_INTELLIGENCE))
             .andExpect(jsonPath("$.sagesse").value(DEFAULT_SAGESSE))
             .andExpect(jsonPath("$.charisme").value(DEFAULT_CHARISME))
+            .andExpect(jsonPath("$.deDeVie").value(DEFAULT_DE_DE_VIE))
+            .andExpect(jsonPath("$.vie").value(DEFAULT_VIE))
+            .andExpect(jsonPath("$.perceptionPassive").value(DEFAULT_PERCEPTION_PASSIVE))
+            .andExpect(jsonPath("$.initiative").value(DEFAULT_INITIATIVE))
+            .andExpect(jsonPath("$.bonusAttaqueCAC").value(DEFAULT_BONUS_ATTAQUE_CAC))
+            .andExpect(jsonPath("$.bonusAttaqueDistance").value(DEFAULT_BONUS_ATTAQUE_DISTANCE))
             .andExpect(jsonPath("$.modificateurForce").value(DEFAULT_MODIFICATEUR_FORCE))
             .andExpect(jsonPath("$.modificateurDexterite").value(DEFAULT_MODIFICATEUR_DEXTERITE))
             .andExpect(jsonPath("$.modificateurConstitution").value(DEFAULT_MODIFICATEUR_CONSTITUTION))
-            .andExpect(jsonPath("$.modificateurCharisme").value(DEFAULT_MODIFICATEUR_CHARISME))
             .andExpect(jsonPath("$.modificateurIntelligence").value(DEFAULT_MODIFICATEUR_INTELLIGENCE))
             .andExpect(jsonPath("$.modificateurSagesse").value(DEFAULT_MODIFICATEUR_SAGESSE))
-            .andExpect(jsonPath("$.deDeVie").value(DEFAULT_DE_DE_VIE));
+            .andExpect(jsonPath("$.modificateurCharisme").value(DEFAULT_MODIFICATEUR_CHARISME));
     }
     @Test
     @Transactional
@@ -738,26 +529,26 @@ public class PersonnageResourceIT {
         em.detach(updatedPersonnage);
         updatedPersonnage
             .nom(UPDATED_NOM)
-            .vie(UPDATED_VIE)
             .classeArmure(UPDATED_CLASSE_ARMURE)
-            .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
             .bonusMaitrise(UPDATED_BONUS_MAITRISE)
-            .initiative(UPDATED_INITIATIVE)
-            .bonusAttaqueCAC(UPDATED_BONUS_ATTAQUE_CAC)
-            .bonusAttaqueDistance(UPDATED_BONUS_ATTAQUE_DISTANCE)
             .force(UPDATED_FORCE)
             .dexterite(UPDATED_DEXTERITE)
             .constitution(UPDATED_CONSTITUTION)
             .intelligence(UPDATED_INTELLIGENCE)
             .sagesse(UPDATED_SAGESSE)
             .charisme(UPDATED_CHARISME)
+            .deDeVie(UPDATED_DE_DE_VIE)
+            .vie(UPDATED_VIE)
+            .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
+            .initiative(UPDATED_INITIATIVE)
+            .bonusAttaqueCAC(UPDATED_BONUS_ATTAQUE_CAC)
+            .bonusAttaqueDistance(UPDATED_BONUS_ATTAQUE_DISTANCE)
             .modificateurForce(UPDATED_MODIFICATEUR_FORCE)
             .modificateurDexterite(UPDATED_MODIFICATEUR_DEXTERITE)
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
-            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
-            .deDeVie(UPDATED_DE_DE_VIE);
+            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME);
 
         restPersonnageMockMvc.perform(put("/api/personnages")
             .contentType(MediaType.APPLICATION_JSON)
@@ -769,26 +560,26 @@ public class PersonnageResourceIT {
         assertThat(personnageList).hasSize(databaseSizeBeforeUpdate);
         Personnage testPersonnage = personnageList.get(personnageList.size() - 1);
         assertThat(testPersonnage.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testPersonnage.getVie()).isEqualTo(UPDATED_VIE);
         assertThat(testPersonnage.getClasseArmure()).isEqualTo(UPDATED_CLASSE_ARMURE);
-        assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(UPDATED_PERCEPTION_PASSIVE);
         assertThat(testPersonnage.getBonusMaitrise()).isEqualTo(UPDATED_BONUS_MAITRISE);
-        assertThat(testPersonnage.getInitiative()).isEqualTo(UPDATED_INITIATIVE);
-        assertThat(testPersonnage.getBonusAttaqueCAC()).isEqualTo(UPDATED_BONUS_ATTAQUE_CAC);
-        assertThat(testPersonnage.getBonusAttaqueDistance()).isEqualTo(UPDATED_BONUS_ATTAQUE_DISTANCE);
         assertThat(testPersonnage.getForce()).isEqualTo(UPDATED_FORCE);
         assertThat(testPersonnage.getDexterite()).isEqualTo(UPDATED_DEXTERITE);
         assertThat(testPersonnage.getConstitution()).isEqualTo(UPDATED_CONSTITUTION);
         assertThat(testPersonnage.getIntelligence()).isEqualTo(UPDATED_INTELLIGENCE);
         assertThat(testPersonnage.getSagesse()).isEqualTo(UPDATED_SAGESSE);
         assertThat(testPersonnage.getCharisme()).isEqualTo(UPDATED_CHARISME);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(UPDATED_DE_DE_VIE);
+        assertThat(testPersonnage.getVie()).isEqualTo(UPDATED_VIE);
+        assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(UPDATED_PERCEPTION_PASSIVE);
+        assertThat(testPersonnage.getInitiative()).isEqualTo(UPDATED_INITIATIVE);
+        assertThat(testPersonnage.getBonusAttaqueCAC()).isEqualTo(UPDATED_BONUS_ATTAQUE_CAC);
+        assertThat(testPersonnage.getBonusAttaqueDistance()).isEqualTo(UPDATED_BONUS_ATTAQUE_DISTANCE);
         assertThat(testPersonnage.getModificateurForce()).isEqualTo(UPDATED_MODIFICATEUR_FORCE);
         assertThat(testPersonnage.getModificateurDexterite()).isEqualTo(UPDATED_MODIFICATEUR_DEXTERITE);
         assertThat(testPersonnage.getModificateurConstitution()).isEqualTo(UPDATED_MODIFICATEUR_CONSTITUTION);
-        assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(UPDATED_MODIFICATEUR_CHARISME);
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(UPDATED_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(UPDATED_MODIFICATEUR_SAGESSE);
-        assertThat(testPersonnage.getDeDeVie()).isEqualTo(UPDATED_DE_DE_VIE);
+        assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(UPDATED_MODIFICATEUR_CHARISME);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -849,25 +640,25 @@ public class PersonnageResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(personnage.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
-            .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
             .andExpect(jsonPath("$.[*].classeArmure").value(hasItem(DEFAULT_CLASSE_ARMURE)))
-            .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
             .andExpect(jsonPath("$.[*].bonusMaitrise").value(hasItem(DEFAULT_BONUS_MAITRISE)))
-            .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
-            .andExpect(jsonPath("$.[*].bonusAttaqueCAC").value(hasItem(DEFAULT_BONUS_ATTAQUE_CAC)))
-            .andExpect(jsonPath("$.[*].bonusAttaqueDistance").value(hasItem(DEFAULT_BONUS_ATTAQUE_DISTANCE)))
             .andExpect(jsonPath("$.[*].force").value(hasItem(DEFAULT_FORCE)))
             .andExpect(jsonPath("$.[*].dexterite").value(hasItem(DEFAULT_DEXTERITE)))
             .andExpect(jsonPath("$.[*].constitution").value(hasItem(DEFAULT_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].intelligence").value(hasItem(DEFAULT_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].sagesse").value(hasItem(DEFAULT_SAGESSE)))
             .andExpect(jsonPath("$.[*].charisme").value(hasItem(DEFAULT_CHARISME)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)))
+            .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
+            .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
+            .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
+            .andExpect(jsonPath("$.[*].bonusAttaqueCAC").value(hasItem(DEFAULT_BONUS_ATTAQUE_CAC)))
+            .andExpect(jsonPath("$.[*].bonusAttaqueDistance").value(hasItem(DEFAULT_BONUS_ATTAQUE_DISTANCE)))
             .andExpect(jsonPath("$.[*].modificateurForce").value(hasItem(DEFAULT_MODIFICATEUR_FORCE)))
             .andExpect(jsonPath("$.[*].modificateurDexterite").value(hasItem(DEFAULT_MODIFICATEUR_DEXTERITE)))
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
-            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
-            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
+            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)));
     }
 }

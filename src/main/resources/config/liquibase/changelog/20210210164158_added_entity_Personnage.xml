@@ -18,25 +18,10 @@
             <column name="nom" type="varchar(255)">
                 <constraints nullable="false" unique="true" uniqueConstraintName="ux_personnage_nom" />
             </column>
-            <column name="vie" type="integer">
-                <constraints nullable="false" />
-            </column>
             <column name="classe_armure" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="perception_passive" type="integer">
-                <constraints nullable="false" />
-            </column>
             <column name="bonus_maitrise" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="initiative" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="bonus_attaque_cac" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="bonus_attaque_distance" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="force" type="integer">
@@ -57,26 +42,41 @@
             <column name="charisme" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="modificateur_force" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="modificateur_dexterite" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="modificateur_constitution" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="modificateur_charisme" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="modificateur_intelligence" type="integer">
-                <constraints nullable="false" />
-            </column>
-            <column name="modificateur_sagesse" type="integer">
-                <constraints nullable="false" />
-            </column>
             <column name="de_de_vie" type="integer">
                 <constraints nullable="false" />
+            </column>
+            <column name="vie" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="perception_passive" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="initiative" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="bonus_attaque_cac" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="bonus_attaque_distance" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_force" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_dexterite" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_constitution" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_intelligence" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_sagesse" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modificateur_charisme" type="integer">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -102,26 +102,26 @@
                   tableName="personnage">
             <column name="id" type="numeric"/>
             <column name="nom" type="string"/>
-            <column name="vie" type="numeric"/>
             <column name="classe_armure" type="numeric"/>
-            <column name="perception_passive" type="numeric"/>
             <column name="bonus_maitrise" type="numeric"/>
-            <column name="initiative" type="numeric"/>
-            <column name="bonus_attaque_cac" type="numeric"/>
-            <column name="bonus_attaque_distance" type="numeric"/>
             <column name="force" type="numeric"/>
             <column name="dexterite" type="numeric"/>
             <column name="constitution" type="numeric"/>
             <column name="intelligence" type="numeric"/>
             <column name="sagesse" type="numeric"/>
             <column name="charisme" type="numeric"/>
+            <column name="de_de_vie" type="numeric"/>
+            <column name="vie" type="numeric"/>
+            <column name="perception_passive" type="numeric"/>
+            <column name="initiative" type="numeric"/>
+            <column name="bonus_attaque_cac" type="numeric"/>
+            <column name="bonus_attaque_distance" type="numeric"/>
             <column name="modificateur_force" type="numeric"/>
             <column name="modificateur_dexterite" type="numeric"/>
             <column name="modificateur_constitution" type="numeric"/>
-            <column name="modificateur_charisme" type="numeric"/>
             <column name="modificateur_intelligence" type="numeric"/>
             <column name="modificateur_sagesse" type="numeric"/>
-            <column name="de_de_vie" type="numeric"/>
+            <column name="modificateur_charisme" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

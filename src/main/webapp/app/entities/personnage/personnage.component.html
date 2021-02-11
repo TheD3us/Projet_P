@@ -42,26 +42,26 @@
                 <tr>
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Nom</span></th>
-                    <th scope="col" ><span>Vie</span></th>
                     <th scope="col" ><span>Classe Armure</span></th>
-                    <th scope="col" ><span>Perception Passive</span></th>
                     <th scope="col" ><span>Bonus Maitrise</span></th>
-                    <th scope="col" ><span>Initiative</span></th>
-                    <th scope="col" ><span>Bonus Attaque CAC</span></th>
-                    <th scope="col" ><span>Bonus Attaque Distance</span></th>
                     <th scope="col" ><span>Force</span></th>
                     <th scope="col" ><span>Dexterite</span></th>
                     <th scope="col" ><span>Constitution</span></th>
                     <th scope="col" ><span>Intelligence</span></th>
                     <th scope="col" ><span>Sagesse</span></th>
                     <th scope="col" ><span>Charisme</span></th>
+                    <th scope="col" ><span>De De Vie</span></th>
+                    <th scope="col" ><span>Vie</span></th>
+                    <th scope="col" ><span>Perception Passive</span></th>
+                    <th scope="col" ><span>Initiative</span></th>
+                    <th scope="col" ><span>Bonus Attaque CAC</span></th>
+                    <th scope="col" ><span>Bonus Attaque Distance</span></th>
                     <th scope="col" ><span>Modificateur Force</span></th>
                     <th scope="col" ><span>Modificateur Dexterite</span></th>
                     <th scope="col" ><span>Modificateur Constitution</span></th>
-                    <th scope="col" ><span>Modificateur Charisme</span></th>
                     <th scope="col" ><span>Modificateur Intelligence</span></th>
                     <th scope="col" ><span>Modificateur Sagesse</span></th>
-                    <th scope="col" ><span>De De Vie</span></th>
+                    <th scope="col" ><span>Modificateur Charisme</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -69,26 +69,26 @@
                 <tr *ngFor="let personnage of personnages ;trackBy: trackId">
                     <td><a [routerLink]="['/personnage', personnage.id, 'view']">{{ personnage.id }}</a></td>
                     <td>{{ personnage.nom }}</td>
-                    <td>{{ personnage.vie }}</td>
                     <td>{{ personnage.classeArmure }}</td>
-                    <td>{{ personnage.perceptionPassive }}</td>
                     <td>{{ personnage.bonusMaitrise }}</td>
-                    <td>{{ personnage.initiative }}</td>
-                    <td>{{ personnage.bonusAttaqueCAC }}</td>
-                    <td>{{ personnage.bonusAttaqueDistance }}</td>
                     <td>{{ personnage.force }}</td>
                     <td>{{ personnage.dexterite }}</td>
                     <td>{{ personnage.constitution }}</td>
                     <td>{{ personnage.intelligence }}</td>
                     <td>{{ personnage.sagesse }}</td>
                     <td>{{ personnage.charisme }}</td>
+                    <td>{{ personnage.deDeVie }}</td>
+                    <td>{{ personnage.vie }}</td>
+                    <td>{{ personnage.perceptionPassive }}</td>
+                    <td>{{ personnage.initiative }}</td>
+                    <td>{{ personnage.bonusAttaqueCAC }}</td>
+                    <td>{{ personnage.bonusAttaqueDistance }}</td>
                     <td>{{ personnage.modificateurForce }}</td>
                     <td>{{ personnage.modificateurDexterite }}</td>
                     <td>{{ personnage.modificateurConstitution }}</td>
-                    <td>{{ personnage.modificateurCharisme }}</td>
                     <td>{{ personnage.modificateurIntelligence }}</td>
                     <td>{{ personnage.modificateurSagesse }}</td>
-                    <td>{{ personnage.deDeVie }}</td>
+                    <td>{{ personnage.modificateurCharisme }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
