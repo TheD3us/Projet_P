@@ -42,9 +42,6 @@
             <column name="charisme" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="de_de_vie" type="integer">
-                <constraints nullable="false" />
-            </column>
             <column name="vie" type="integer">
                 <constraints nullable="true" />
             </column>
@@ -78,6 +75,12 @@
             <column name="modificateur_charisme" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="niveau" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="de_de_vie" type="integer">
+                <constraints nullable="false" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -110,7 +113,6 @@
             <column name="intelligence" type="numeric"/>
             <column name="sagesse" type="numeric"/>
             <column name="charisme" type="numeric"/>
-            <column name="de_de_vie" type="numeric"/>
             <column name="vie" type="numeric"/>
             <column name="perception_passive" type="numeric"/>
             <column name="initiative" type="numeric"/>
@@ -122,6 +124,8 @@
             <column name="modificateur_intelligence" type="numeric"/>
             <column name="modificateur_sagesse" type="numeric"/>
             <column name="modificateur_charisme" type="numeric"/>
+            <column name="niveau" type="numeric"/>
+            <column name="de_de_vie" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

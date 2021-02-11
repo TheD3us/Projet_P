@@ -50,11 +50,6 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "deDeVie",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "vie",
       "fieldType": "Integer",
       "fieldValidateRules": ["min"],
@@ -99,6 +94,17 @@
     {
       "fieldName": "modificateurCharisme",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "niveau",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "deDeVie",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     }
   ],
   "changelogDate": "20210210164158",

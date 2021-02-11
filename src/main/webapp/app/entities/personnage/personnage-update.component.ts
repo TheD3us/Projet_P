@@ -26,7 +26,6 @@ export class PersonnageUpdateComponent implements OnInit {
     intelligence: [null, [Validators.required]],
     sagesse: [null, [Validators.required]],
     charisme: [null, [Validators.required]],
-    deDeVie: [null, [Validators.required]],
     vie: [null, [Validators.min(1)]],
     perceptionPassive: [],
     initiative: [],
@@ -38,6 +37,8 @@ export class PersonnageUpdateComponent implements OnInit {
     modificateurIntelligence: [],
     modificateurSagesse: [],
     modificateurCharisme: [],
+    niveau: [null, [Validators.required, Validators.min(1)]],
+    deDeVie: [null, [Validators.required]],
   });
 
   constructor(protected personnageService: PersonnageService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -60,7 +61,6 @@ export class PersonnageUpdateComponent implements OnInit {
       intelligence: personnage.intelligence,
       sagesse: personnage.sagesse,
       charisme: personnage.charisme,
-      deDeVie: personnage.deDeVie,
       vie: personnage.vie,
       perceptionPassive: personnage.perceptionPassive,
       initiative: personnage.initiative,
@@ -72,6 +72,8 @@ export class PersonnageUpdateComponent implements OnInit {
       modificateurIntelligence: personnage.modificateurIntelligence,
       modificateurSagesse: personnage.modificateurSagesse,
       modificateurCharisme: personnage.modificateurCharisme,
+      niveau: personnage.niveau,
+      deDeVie: personnage.deDeVie,
     });
   }
 
@@ -102,7 +104,6 @@ export class PersonnageUpdateComponent implements OnInit {
       intelligence: this.editForm.get(['intelligence'])!.value,
       sagesse: this.editForm.get(['sagesse'])!.value,
       charisme: this.editForm.get(['charisme'])!.value,
-      deDeVie: this.editForm.get(['deDeVie'])!.value,
       vie: this.editForm.get(['vie'])!.value,
       perceptionPassive: this.editForm.get(['perceptionPassive'])!.value,
       initiative: this.editForm.get(['initiative'])!.value,
@@ -114,6 +115,8 @@ export class PersonnageUpdateComponent implements OnInit {
       modificateurIntelligence: this.editForm.get(['modificateurIntelligence'])!.value,
       modificateurSagesse: this.editForm.get(['modificateurSagesse'])!.value,
       modificateurCharisme: this.editForm.get(['modificateurCharisme'])!.value,
+      niveau: this.editForm.get(['niveau'])!.value,
+      deDeVie: this.editForm.get(['deDeVie'])!.value,
     };
   }
 

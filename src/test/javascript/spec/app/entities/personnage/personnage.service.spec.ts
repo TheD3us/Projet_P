@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(PersonnageService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Personnage(0, 'AAAAAAA', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+      elemDefault = new Personnage(0, 'AAAAAAA', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -63,7 +63,6 @@ describe('Service Tests', () => {
             intelligence: 1,
             sagesse: 1,
             charisme: 1,
-            deDeVie: 1,
             vie: 1,
             perceptionPassive: 1,
             initiative: 1,
@@ -75,6 +74,8 @@ describe('Service Tests', () => {
             modificateurIntelligence: 1,
             modificateurSagesse: 1,
             modificateurCharisme: 1,
+            niveau: 1,
+            deDeVie: 1,
           },
           elemDefault
         );
@@ -100,7 +101,6 @@ describe('Service Tests', () => {
             intelligence: 1,
             sagesse: 1,
             charisme: 1,
-            deDeVie: 1,
             vie: 1,
             perceptionPassive: 1,
             initiative: 1,
@@ -112,6 +112,8 @@ describe('Service Tests', () => {
             modificateurIntelligence: 1,
             modificateurSagesse: 1,
             modificateurCharisme: 1,
+            niveau: 1,
+            deDeVie: 1,
           },
           elemDefault
         );

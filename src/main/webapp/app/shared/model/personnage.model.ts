@@ -9,7 +9,6 @@ export interface IPersonnage {
   intelligence?: number;
   sagesse?: number;
   charisme?: number;
-  deDeVie?: number;
   vie?: number;
   perceptionPassive?: number;
   initiative?: number;
@@ -21,6 +20,8 @@ export interface IPersonnage {
   modificateurIntelligence?: number;
   modificateurSagesse?: number;
   modificateurCharisme?: number;
+  niveau?: number;
+  deDeVie?: number;
 }
 
 export class Personnage implements IPersonnage {
@@ -35,7 +36,6 @@ export class Personnage implements IPersonnage {
     public intelligence?: number,
     public sagesse?: number,
     public charisme?: number,
-    public deDeVie?: number,
     public vie?: number,
     public perceptionPassive?: number,
     public initiative?: number,
@@ -46,6 +46,8 @@ export class Personnage implements IPersonnage {
     public modificateurConstitution?: number,
     public modificateurIntelligence?: number,
     public modificateurSagesse?: number,
-    public modificateurCharisme?: number
+    public modificateurCharisme?: number,
+    public niveau?: number,
+    public deDeVie?: number
   ) {}
 }

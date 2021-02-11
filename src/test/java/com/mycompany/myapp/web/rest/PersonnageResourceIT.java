@@ -64,9 +64,6 @@ public class PersonnageResourceIT {
     private static final Integer DEFAULT_CHARISME = 1;
     private static final Integer UPDATED_CHARISME = 2;
 
-    private static final Integer DEFAULT_DE_DE_VIE = 1;
-    private static final Integer UPDATED_DE_DE_VIE = 2;
-
     private static final Integer DEFAULT_VIE = 1;
     private static final Integer UPDATED_VIE = 2;
 
@@ -99,6 +96,12 @@ public class PersonnageResourceIT {
 
     private static final Integer DEFAULT_MODIFICATEUR_CHARISME = 1;
     private static final Integer UPDATED_MODIFICATEUR_CHARISME = 2;
+
+    private static final Integer DEFAULT_NIVEAU = 1;
+    private static final Integer UPDATED_NIVEAU = 2;
+
+    private static final Integer DEFAULT_DE_DE_VIE = 1;
+    private static final Integer UPDATED_DE_DE_VIE = 2;
 
     @Autowired
     private PersonnageRepository personnageRepository;
@@ -136,7 +139,6 @@ public class PersonnageResourceIT {
             .intelligence(DEFAULT_INTELLIGENCE)
             .sagesse(DEFAULT_SAGESSE)
             .charisme(DEFAULT_CHARISME)
-            .deDeVie(DEFAULT_DE_DE_VIE)
             .vie(DEFAULT_VIE)
             .perceptionPassive(DEFAULT_PERCEPTION_PASSIVE)
             .initiative(DEFAULT_INITIATIVE)
@@ -147,7 +149,9 @@ public class PersonnageResourceIT {
             .modificateurConstitution(DEFAULT_MODIFICATEUR_CONSTITUTION)
             .modificateurIntelligence(DEFAULT_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(DEFAULT_MODIFICATEUR_SAGESSE)
-            .modificateurCharisme(DEFAULT_MODIFICATEUR_CHARISME);
+            .modificateurCharisme(DEFAULT_MODIFICATEUR_CHARISME)
+            .niveau(DEFAULT_NIVEAU)
+            .deDeVie(DEFAULT_DE_DE_VIE);
         return personnage;
     }
     /**
@@ -167,7 +171,6 @@ public class PersonnageResourceIT {
             .intelligence(UPDATED_INTELLIGENCE)
             .sagesse(UPDATED_SAGESSE)
             .charisme(UPDATED_CHARISME)
-            .deDeVie(UPDATED_DE_DE_VIE)
             .vie(UPDATED_VIE)
             .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
             .initiative(UPDATED_INITIATIVE)
@@ -178,7 +181,9 @@ public class PersonnageResourceIT {
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
-            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME);
+            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
+            .niveau(UPDATED_NIVEAU)
+            .deDeVie(UPDATED_DE_DE_VIE);
         return personnage;
     }
 
@@ -210,7 +215,6 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getIntelligence()).isEqualTo(DEFAULT_INTELLIGENCE);
         assertThat(testPersonnage.getSagesse()).isEqualTo(DEFAULT_SAGESSE);
         assertThat(testPersonnage.getCharisme()).isEqualTo(DEFAULT_CHARISME);
-        assertThat(testPersonnage.getDeDeVie()).isEqualTo(DEFAULT_DE_DE_VIE);
         assertThat(testPersonnage.getVie()).isEqualTo(DEFAULT_VIE);
         assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(DEFAULT_PERCEPTION_PASSIVE);
         assertThat(testPersonnage.getInitiative()).isEqualTo(DEFAULT_INITIATIVE);
@@ -222,6 +226,8 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(DEFAULT_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(DEFAULT_MODIFICATEUR_SAGESSE);
         assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(DEFAULT_MODIFICATEUR_CHARISME);
+        assertThat(testPersonnage.getNiveau()).isEqualTo(DEFAULT_NIVEAU);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(DEFAULT_DE_DE_VIE);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -423,6 +429,25 @@ public class PersonnageResourceIT {
 
     @Test
     @Transactional
+    public void checkNiveauIsRequired() throws Exception {
+        int databaseSizeBeforeTest = personnageRepository.findAll().size();
+        // set the field null
+        personnage.setNiveau(null);
+
+        // Create the Personnage, which fails.
+
+
+        restPersonnageMockMvc.perform(post("/api/personnages")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(personnage)))
+            .andExpect(status().isBadRequest());
+
+        List<Personnage> personnageList = personnageRepository.findAll();
+        assertThat(personnageList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkDeDeVieIsRequired() throws Exception {
         int databaseSizeBeforeTest = personnageRepository.findAll().size();
         // set the field null
@@ -460,7 +485,6 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].intelligence").value(hasItem(DEFAULT_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].sagesse").value(hasItem(DEFAULT_SAGESSE)))
             .andExpect(jsonPath("$.[*].charisme").value(hasItem(DEFAULT_CHARISME)))
-            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)))
             .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
             .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
             .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
@@ -471,7 +495,9 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
-            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)));
+            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
+            .andExpect(jsonPath("$.[*].niveau").value(hasItem(DEFAULT_NIVEAU)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
     }
     
     @Test
@@ -494,7 +520,6 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.intelligence").value(DEFAULT_INTELLIGENCE))
             .andExpect(jsonPath("$.sagesse").value(DEFAULT_SAGESSE))
             .andExpect(jsonPath("$.charisme").value(DEFAULT_CHARISME))
-            .andExpect(jsonPath("$.deDeVie").value(DEFAULT_DE_DE_VIE))
             .andExpect(jsonPath("$.vie").value(DEFAULT_VIE))
             .andExpect(jsonPath("$.perceptionPassive").value(DEFAULT_PERCEPTION_PASSIVE))
             .andExpect(jsonPath("$.initiative").value(DEFAULT_INITIATIVE))
@@ -505,7 +530,9 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.modificateurConstitution").value(DEFAULT_MODIFICATEUR_CONSTITUTION))
             .andExpect(jsonPath("$.modificateurIntelligence").value(DEFAULT_MODIFICATEUR_INTELLIGENCE))
             .andExpect(jsonPath("$.modificateurSagesse").value(DEFAULT_MODIFICATEUR_SAGESSE))
-            .andExpect(jsonPath("$.modificateurCharisme").value(DEFAULT_MODIFICATEUR_CHARISME));
+            .andExpect(jsonPath("$.modificateurCharisme").value(DEFAULT_MODIFICATEUR_CHARISME))
+            .andExpect(jsonPath("$.niveau").value(DEFAULT_NIVEAU))
+            .andExpect(jsonPath("$.deDeVie").value(DEFAULT_DE_DE_VIE));
     }
     @Test
     @Transactional
@@ -537,7 +564,6 @@ public class PersonnageResourceIT {
             .intelligence(UPDATED_INTELLIGENCE)
             .sagesse(UPDATED_SAGESSE)
             .charisme(UPDATED_CHARISME)
-            .deDeVie(UPDATED_DE_DE_VIE)
             .vie(UPDATED_VIE)
             .perceptionPassive(UPDATED_PERCEPTION_PASSIVE)
             .initiative(UPDATED_INITIATIVE)
@@ -548,7 +574,9 @@ public class PersonnageResourceIT {
             .modificateurConstitution(UPDATED_MODIFICATEUR_CONSTITUTION)
             .modificateurIntelligence(UPDATED_MODIFICATEUR_INTELLIGENCE)
             .modificateurSagesse(UPDATED_MODIFICATEUR_SAGESSE)
-            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME);
+            .modificateurCharisme(UPDATED_MODIFICATEUR_CHARISME)
+            .niveau(UPDATED_NIVEAU)
+            .deDeVie(UPDATED_DE_DE_VIE);
 
         restPersonnageMockMvc.perform(put("/api/personnages")
             .contentType(MediaType.APPLICATION_JSON)
@@ -568,7 +596,6 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getIntelligence()).isEqualTo(UPDATED_INTELLIGENCE);
         assertThat(testPersonnage.getSagesse()).isEqualTo(UPDATED_SAGESSE);
         assertThat(testPersonnage.getCharisme()).isEqualTo(UPDATED_CHARISME);
-        assertThat(testPersonnage.getDeDeVie()).isEqualTo(UPDATED_DE_DE_VIE);
         assertThat(testPersonnage.getVie()).isEqualTo(UPDATED_VIE);
         assertThat(testPersonnage.getPerceptionPassive()).isEqualTo(UPDATED_PERCEPTION_PASSIVE);
         assertThat(testPersonnage.getInitiative()).isEqualTo(UPDATED_INITIATIVE);
@@ -580,6 +607,8 @@ public class PersonnageResourceIT {
         assertThat(testPersonnage.getModificateurIntelligence()).isEqualTo(UPDATED_MODIFICATEUR_INTELLIGENCE);
         assertThat(testPersonnage.getModificateurSagesse()).isEqualTo(UPDATED_MODIFICATEUR_SAGESSE);
         assertThat(testPersonnage.getModificateurCharisme()).isEqualTo(UPDATED_MODIFICATEUR_CHARISME);
+        assertThat(testPersonnage.getNiveau()).isEqualTo(UPDATED_NIVEAU);
+        assertThat(testPersonnage.getDeDeVie()).isEqualTo(UPDATED_DE_DE_VIE);
 
         // Validate the Personnage in Elasticsearch
         verify(mockPersonnageSearchRepository, times(1)).save(testPersonnage);
@@ -648,7 +677,6 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].intelligence").value(hasItem(DEFAULT_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].sagesse").value(hasItem(DEFAULT_SAGESSE)))
             .andExpect(jsonPath("$.[*].charisme").value(hasItem(DEFAULT_CHARISME)))
-            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)))
             .andExpect(jsonPath("$.[*].vie").value(hasItem(DEFAULT_VIE)))
             .andExpect(jsonPath("$.[*].perceptionPassive").value(hasItem(DEFAULT_PERCEPTION_PASSIVE)))
             .andExpect(jsonPath("$.[*].initiative").value(hasItem(DEFAULT_INITIATIVE)))
@@ -659,6 +687,8 @@ public class PersonnageResourceIT {
             .andExpect(jsonPath("$.[*].modificateurConstitution").value(hasItem(DEFAULT_MODIFICATEUR_CONSTITUTION)))
             .andExpect(jsonPath("$.[*].modificateurIntelligence").value(hasItem(DEFAULT_MODIFICATEUR_INTELLIGENCE)))
             .andExpect(jsonPath("$.[*].modificateurSagesse").value(hasItem(DEFAULT_MODIFICATEUR_SAGESSE)))
-            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)));
+            .andExpect(jsonPath("$.[*].modificateurCharisme").value(hasItem(DEFAULT_MODIFICATEUR_CHARISME)))
+            .andExpect(jsonPath("$.[*].niveau").value(hasItem(DEFAULT_NIVEAU)))
+            .andExpect(jsonPath("$.[*].deDeVie").value(hasItem(DEFAULT_DE_DE_VIE)));
     }
 }
