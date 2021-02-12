@@ -155,45 +155,11 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_vie">Vie</label>
-                    <input type="number" class="form-control" name="vie" id="field_vie"
-                           formControlName="vie"/>
-                    <div *ngIf="editForm.get('vie')!.invalid && (editForm.get('vie')!.dirty || editForm.get('vie')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('vie')?.errors?.min">
-                            This field should be at least 1.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('vie')?.errors?.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_perceptionPassive">Perception Passive</label>
-                    <input type="number" class="form-control" name="perceptionPassive" id="field_perceptionPassive"
-                           formControlName="perceptionPassive"/>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_initiative">Initiative</label>
-                    <input type="number" class="form-control" name="initiative" id="field_initiative"
-                           formControlName="initiative"/>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_bonusAttaqueCAC">Bonus Attaque CAC</label>
-                    <input type="number" class="form-control" name="bonusAttaqueCAC" id="field_bonusAttaqueCAC"
-                           formControlName="bonusAttaqueCAC"/>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_bonusAttaqueDistance">Bonus Attaque Distance</label>
-                    <input type="number" class="form-control" name="bonusAttaqueDistance" id="field_bonusAttaqueDistance"
-                           formControlName="bonusAttaqueDistance"/>
-                </div>
+
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_modificateurForce">Modificateur Force</label>
