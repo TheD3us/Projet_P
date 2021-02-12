@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="D3us (generated)" id="1613145175534-1">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_authority_name"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-2">
+        <dropForeignKeyConstraint baseTableName="jhi_persistent_audit_evt_data" constraintName="fk_evt_pers_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-3">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_user_id"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-4">
+        <dropUniqueConstraint constraintName="ux_images_name" tableName="images"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-5">
+        <dropUniqueConstraint constraintName="ux_images_src" tableName="images"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-6">
+        <dropUniqueConstraint constraintName="ux_user_email" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-7">
+        <dropUniqueConstraint constraintName="ux_user_login" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-8">
+        <dropTable tableName="images"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-9">
+        <dropTable tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-10">
+        <dropTable tableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-11">
+        <dropTable tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-12">
+        <dropTable tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-13">
+        <dropTable tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613145175534-14">
+        <dropSequence sequenceName="sequence_generator"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="D3us (generated)" id="1613064373930-13">
+        <addColumn tableName="personnage">
+            <column name="de_de_vie" type="int4">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-14">
+        <addColumn tableName="personnage">
+            <column name="niveau" type="int4">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-1">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-2">
+        <dropNotNullConstraint columnDataType="int" columnName="bonus_attaque_cac" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-3">
+        <dropNotNullConstraint columnDataType="int" columnName="bonus_attaque_distance" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-4">
+        <dropNotNullConstraint columnDataType="int" columnName="initiative" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-5">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_charisme" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-6">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_constitution" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-7">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_dexterite" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-8">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_force" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-9">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_intelligence" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-10">
+        <dropNotNullConstraint columnDataType="int" columnName="modificateur_sagesse" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-11">
+        <dropNotNullConstraint columnDataType="int" columnName="perception_passive" tableName="personnage"/>
+    </changeSet>
+    <changeSet author="D3us (generated)" id="1613064373930-12">
+        <dropNotNullConstraint columnDataType="int" columnName="vie" tableName="personnage"/>
+    </changeSet>
+</databaseChangeLog>
