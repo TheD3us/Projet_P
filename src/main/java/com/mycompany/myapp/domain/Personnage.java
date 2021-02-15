@@ -229,68 +229,68 @@ public class Personnage implements Serializable {
     }
 
     public Integer getVie() {
-        return vie;
+        return deDeVie + modificateurConstitution;
     }
 
     public Personnage vie(Integer vie) {
-        this.vie = vie;
+        this.vie = deDeVie + modificateurConstitution;
         return this;
     }
 
     public void setVie(Integer vie) {
-        this.vie = vie;
+        this.vie = deDeVie + modificateurConstitution ;
     }
 
     public Integer getPerceptionPassive() {
-        return perceptionPassive;
+        return 8 + modificateurSagesse + bonusMaitrise;
     }
 
     public Personnage perceptionPassive(Integer perceptionPassive) {
-        this.perceptionPassive = perceptionPassive;
+        this.perceptionPassive = 8 + modificateurSagesse + bonusMaitrise;
         return this;
     }
 
     public void setPerceptionPassive(Integer perceptionPassive) {
-        this.perceptionPassive = perceptionPassive;
+        this.perceptionPassive = 8 + modificateurSagesse + bonusMaitrise;
     }
 
     public Integer getInitiative() {
-        return initiative;
+        return modificateurDexterite;
     }
 
     public Personnage initiative(Integer initiative) {
-        this.initiative = initiative;
+        this.initiative = modificateurDexterite;
         return this;
     }
 
     public void setInitiative(Integer initiative) {
-        this.initiative = initiative;
+        this.initiative = modificateurDexterite;
     }
 
     public Integer getBonusAttaqueCAC() {
-        return bonusAttaqueCAC;
+        return modificateurForce;
     }
 
     public Personnage bonusAttaqueCAC(Integer bonusAttaqueCAC) {
-        this.bonusAttaqueCAC = bonusAttaqueCAC;
+        this.bonusAttaqueCAC = modificateurForce;
         return this;
     }
 
     public void setBonusAttaqueCAC(Integer bonusAttaqueCAC) {
-        this.bonusAttaqueCAC = bonusAttaqueCAC;
+        this.bonusAttaqueCAC = modificateurForce;
     }
 
     public Integer getBonusAttaqueDistance() {
-        return bonusAttaqueDistance;
+        return modificateurDexterite;
     }
 
     public Personnage bonusAttaqueDistance(Integer bonusAttaqueDistance) {
-        this.bonusAttaqueDistance = bonusAttaqueDistance;
+        this.bonusAttaqueDistance = modificateurDexterite;
         return this;
     }
 
     public void setBonusAttaqueDistance(Integer bonusAttaqueDistance) {
-        this.bonusAttaqueDistance = bonusAttaqueDistance;
+        this.bonusAttaqueDistance = modificateurDexterite;
     }
 
     public Integer getModificateurForce() {
