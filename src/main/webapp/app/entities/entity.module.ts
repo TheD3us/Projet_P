@@ -12,6 +12,10 @@ import { RouterModule } from '@angular/router';
         path: 'personnage',
         loadChildren: () => import('./personnage/personnage.module').then(m => m.ProjetPPersonnageModule),
       },
+      {
+        path: 'table-modificateur',
+        loadChildren: () => import('./table-modificateur/table-modificateur.module').then(m => m.ProjetPTableModificateurModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
