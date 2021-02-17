@@ -16,10 +16,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="valeur" type="integer">
-                <constraints nullable="false" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_table_modificateur_valeur" />
             </column>
             <column name="modificateur" type="integer">
-                <constraints nullable="false" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_table_modificateur_modificateur" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

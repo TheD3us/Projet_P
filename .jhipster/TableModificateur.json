@@ -6,16 +6,16 @@
     {
       "fieldName": "valeur",
       "fieldType": "Integer",
-      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRules": ["required", "unique", "min", "max"],
       "fieldValidateRulesMin": "1",
       "fieldValidateRulesMax": "30"
     },
     {
       "fieldName": "modificateur",
       "fieldType": "Integer",
-      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRules": ["required", "unique", "min", "max"],
       "fieldValidateRulesMin": "-5",
-      "fieldValidateRulesMax": "5"
+      "fieldValidateRulesMax": "10"
     }
   ],
   "changelogDate": "20210217151751",
