@@ -13,7 +13,7 @@
     {
       "fieldName": "modificateur",
       "fieldType": "Integer",
-      "fieldValidateRules": ["required", "unique", "min", "max"],
+      "fieldValidateRules": ["required", "min", "max"],
       "fieldValidateRulesMin": "-5",
       "fieldValidateRulesMax": "10"
     }

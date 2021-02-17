@@ -31,7 +31,7 @@ public class TableModificateur implements Serializable {
     @NotNull
     @Min(value = -5)
     @Max(value = 10)
-    @Column(name = "modificateur", nullable = false, unique = true)
+    @Column(name = "modificateur", nullable = false)
     private Integer modificateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
