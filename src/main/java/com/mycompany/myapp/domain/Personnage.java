@@ -4,8 +4,15 @@ package com.mycompany.myapp.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.mycompany.myapp.web.rest.TableModificateurResource;
+
 import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import liquibase.command.core.ExecuteSqlCommand;
+
 import java.io.Serializable;
+import java.sql.*;
+
 
 /**
  * A Personnage.
@@ -101,6 +108,12 @@ public class Personnage implements Serializable {
     @NotNull
     @Column(name = "de_de_vie", nullable = false)
     private Integer deDeVie;
+
+    Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+    public String instructionBase;
+    public int verifBase;
+
+    Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/projetp","postgres","Lordkakash1" );
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -294,8 +307,17 @@ public class Personnage implements Serializable {
     }
 
     public Integer getModificateurForce() {
-        return modificateurForce;
-    }
+        instructionBase = "SELECT modificateur FROM table_modificateur WHERE valeur = " + force;
+        try{
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(instructionBase);
+            verifBase = rs.getInt(force);
+            return verifBase;
+        }
+     catch (SQLException e) {
+        System.out.println("Erreur valeur");
+     }
+    }   
 
     public Personnage modificateurForce(Integer modificateurForce) {
         this.modificateurForce = modificateurForce;

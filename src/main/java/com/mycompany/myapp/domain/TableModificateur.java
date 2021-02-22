@@ -25,8 +25,7 @@ public class TableModificateur implements Serializable {
     @NotNull
     @Min(value = 1)
     @Max(value = 30)
-    @Column(name = "valeur", nullable = false, unique = true)
-    private Integer valeur;
+    @Column(name = "valeur", nullable = false, unique = true) Integer valeur;
 
     @NotNull
     @Min(value = -5)
