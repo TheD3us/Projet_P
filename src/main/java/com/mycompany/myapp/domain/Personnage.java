@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -12,7 +11,6 @@ import liquibase.command.core.ExecuteSqlCommand;
 
 import java.io.Serializable;
 import java.sql.*;
-
 
 /**
  * A Personnage.
@@ -109,13 +107,31 @@ public class Personnage implements Serializable {
     @Column(name = "de_de_vie", nullable = false)
     private Integer deDeVie;
 
-    Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
     public String instructionBase;
     public int verifBase;
 
-    Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/projetp","postgres","Lordkakash1" );
+
+    //Connexion à la baase de donnéees
+
+    public static void ConnexionBDD(String instructionBase, int verifBase, int caracteristique)
+            throws ClassNotFoundException
+    {
+        try {            
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/projetp","postgres","Lordkakash1" );
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(instructionBase);
+            verifBase = rs.getInt(caracteristique);
+            con.close();
+        }
+     catch (SQLException e) {
+        System.out.println("Erreur valeur");
+     } 
+    }
+
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
     public Long getId() {
         return id;
     }
@@ -251,7 +267,7 @@ public class Personnage implements Serializable {
     }
 
     public void setVie(Integer vie) {
-        this.vie = deDeVie + modificateurConstitution ;
+        this.vie = deDeVie + modificateurConstitution;
     }
 
     public Integer getPerceptionPassive() {
@@ -306,17 +322,16 @@ public class Personnage implements Serializable {
         this.bonusAttaqueDistance = modificateurDexterite;
     }
 
-    public Integer getModificateurForce() {
+
+    public Integer getModificateurForce() throws ClassNotFoundException {
         instructionBase = "SELECT modificateur FROM table_modificateur WHERE valeur = " + force;
-        try{
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(instructionBase);
-            verifBase = rs.getInt(force);
-            return verifBase;
-        }
-     catch (SQLException e) {
-        System.out.println("Erreur valeur");
-     }
+        Integer caracteristique = force;
+        ConnexionBDD(instructionBase, verifBase, caracteristique);
+
+
+     return verifBase;
+        
+     
     }   
 
     public Personnage modificateurForce(Integer modificateurForce) {
